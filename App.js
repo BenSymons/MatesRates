@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreenNavigator from './Components/navigators/HomeScreenNavigator';
 import ProfileNavigator from './Components/navigators/ProfileNavigator';
 import SearchBarNavigator from './Components/navigators/SearchBarNavigator';
-import MapView from './Components/screens/MapViewPage';
+import FriendsNavigator from './Components/navigators/FriendsNavigator';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const Tab = createBottomTabNavigator();
@@ -26,7 +26,7 @@ function App() {
           <Tab.Navigator>
             <Tab.Screen name="Home" component={HomeScreenNavigator} />
             <Tab.Screen name="Search" component={SearchBarNavigator} />
-            <Tab.Screen name="Map" component={MapView} />
+            <Tab.Screen name="Find Friends" component={FriendsNavigator} />
             <Tab.Screen name="Profile" component={ProfileNavigator} />
           </Tab.Navigator>
         </NavigationContainer>
