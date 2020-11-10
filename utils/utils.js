@@ -16,10 +16,15 @@ export const idLookup = (username, array) => {
 
 export const wishlistCount = (data, restaurant_id) => {
   let count = 0;
+  let wished = false;
   data.users.forEach((user) => {
     if (user.wishlist.some((e) => e.id === restaurant_id)) {
       count++;
     }
   });
-  return count;
+
+  if (data.users[0].wishlist.some((e) => e.id === restaurant_id)) {
+    wished = true;
+  }
+  return { count, wished };
 };

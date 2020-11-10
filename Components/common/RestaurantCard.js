@@ -8,7 +8,7 @@ import WishlistButton from './WishlistButton';
 export default ({ restaurant, wishlist, navigation }) => {
   const { name, city, logo, id } = restaurant;
 
-  // const count = wishlistCount(wishlist, id);
+  const { count, wished } = wishlistCount(wishlist, id);
 
   return (
     <Card style={styles.card}>
@@ -35,8 +35,8 @@ export default ({ restaurant, wishlist, navigation }) => {
         }}
         title="VIEW NOW"
       />
-      <WishlistButton restaurant_id={id} />
-      {wishlist && <Text>Wished by: {wishlistCount(wishlist, id)}</Text>}
+      <WishlistButton restaurant_id={id} wished={wished} />
+      {wishlist && <Text>Wished by: {count}</Text>}
     </Card>
   );
 };
