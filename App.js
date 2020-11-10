@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { StyleSheet } from 'react-native';
+import { LogBox, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreenNavigator from './Components/navigators/HomeScreenNavigator';
 import ProfileNavigator from './Components/navigators/ProfileNavigator';
@@ -9,8 +9,8 @@ import SearchBarNavigator from './Components/navigators/SearchBarNavigator';
 import MapView from './Components/screens/MapViewPage';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { useEffect } from 'react';
-import { LogBox } from 'react-native';
 const Tab = createBottomTabNavigator();
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function App() {
   // maybe put this outside --> line 16
@@ -21,17 +21,40 @@ function App() {
   // <--
 
   useEffect(() => {
-    LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+    LogBox && LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
 
   return (
     <>
       <ApolloProvider client={client}>
         <NavigationContainer>
-          <Tab.Navigator>
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+
+                if (route.name === 'Home') {
+                  iconName = focused ? 'ios-home' : 'ios-home';
+                } else if (route.name === 'Search') {
+                  iconName = focused ? 'ios-search' : 'ios-search';
+                } else if (route.name === 'Friends') {
+                  iconName = focused ? 'ios-person-add' : 'ios-person-add';
+                } else if (route.name === 'Profile') {
+                  iconName = focused ? 'ios-person' : 'ios-person';
+                }
+
+                // You can return any component that you like here!
+                return <Ionicons name={iconName} size={size} color={color} />;
+              }
+            })}
+            tabBarOptions={{
+              activeTintColor: 'tomato',
+              inactiveTintColor: 'gray'
+            }}
+          >
             <Tab.Screen name="Home" component={HomeScreenNavigator} />
             <Tab.Screen name="Search" component={SearchBarNavigator} />
-            <Tab.Screen name="Map" component={MapView} />
+            <Tab.Screen name="Friends" component={MapView} />
             <Tab.Screen name="Profile" component={ProfileNavigator} />
           </Tab.Navigator>
         </NavigationContainer>
