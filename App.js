@@ -8,16 +8,21 @@ import ProfileNavigator from './Components/navigators/ProfileNavigator';
 import SearchBarNavigator from './Components/navigators/SearchBarNavigator';
 import MapView from './Components/screens/MapViewPage';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-
+import { useEffect } from 'react';
+import { LogBox } from 'react-native';
 const Tab = createBottomTabNavigator();
 
 function App() {
   // maybe put this outside --> line 16
   const client = new ApolloClient({
-    uri: 'http://localhost:4000/graphql',
+    uri: 'https://matesrates.herokuapp.com/graphql',
     cache: new InMemoryCache()
   });
   // <--
+
+  useEffect(() => {
+    LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
+  }, []);
 
   return (
     <>

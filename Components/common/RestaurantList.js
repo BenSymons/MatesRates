@@ -9,6 +9,7 @@ export default ({ restaurants, wishlist, navigation }) => {
     <ScrollView>
       {restaurants.map((restaurant) => (
         <RestaurantCard
+          key={restaurant.id}
           wishlist={wishlist}
           restaurant={restaurant}
           navigation={navigation}

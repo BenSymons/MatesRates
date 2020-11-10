@@ -1,18 +1,8 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  FlatList,
-  Button
-} from 'react-native';
-import { Image } from 'react-native-elements';
-import mock from '../../mock';
+import { Text, View, Button } from 'react-native';
 import ReviewList from '../common/ReviewList';
 import { averageRatings } from '../../utils/utils';
-
 
 const RestaurantPage = ({ navigation, route }) => {
   const { name, cuisine, city, id, reviews } = route.params.restaurant;

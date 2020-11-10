@@ -2,14 +2,18 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import FriendForm from '../common/FriendAdder';
+import WishlistCarousel from '../common/WishlistCarousel';
+import FriendsCarousel from '../common/FriendsCarousel';
+import { ScrollView } from 'react-native-gesture-handler';
+import { Divider } from 'react-native-elements';
 
 const ProfileScreen = ({ navigation, route }) => {
   return (
-    <View>
+    <ScrollView>
       <Text>Profile Screen</Text>
       <Text>Image of user</Text>
       <Text>Number of reviews</Text>
-      <FriendForm/>
+      <FriendForm />
       <Button
         style={styles.name}
         title="FriendList"
@@ -28,7 +32,11 @@ const ProfileScreen = ({ navigation, route }) => {
       >
         Wishlist with preview BUTTON
       </Button>
-    </View>
+      <Divider />
+      <WishlistCarousel />
+      <Divider />
+      <FriendsCarousel />
+    </ScrollView>
   );
 };
 

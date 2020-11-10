@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
 import RestaurantList from '../common/RestaurantList';
+
 import { WISHLIST } from '../../utils/queries';
 import { ScrollView } from 'react-native-gesture-handler';
 
