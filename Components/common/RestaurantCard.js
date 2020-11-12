@@ -64,7 +64,12 @@ export default ({ restaurant, wishlist, navigation }) => {
       </TouchableOpacity>
 
       <Button
-        onPress={() => navigation.navigate('ReviewForm', { restaurant_id: id })}
+        onPress={() =>
+          navigation.navigate('ReviewForm', {
+            restaurant_id: id,
+            restaurant_name: name
+          })
+        }
         // onPress={() => {
         //   navigation.navigate('Restaurant', {
         //     restaurant

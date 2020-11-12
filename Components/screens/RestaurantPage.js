@@ -13,7 +13,6 @@ import mock from '../../mock';
 import ReviewList from '../common/ReviewList';
 import { averageRatings } from '../../utils/utils';
 
-
 const RestaurantPage = ({ navigation, route }) => {
   const { name, cuisine, city, id, reviews } = route.params.restaurant;
   return (
@@ -23,7 +22,12 @@ const RestaurantPage = ({ navigation, route }) => {
       <Text>{cuisine}</Text>
       <Text>{averageRatings(reviews)}</Text>
       <Button
-        onPress={() => navigation.navigate('ReviewForm', { restaurant_id: id })}
+        onPress={() =>
+          navigation.navigate('ReviewForm', {
+            restaurant_id: id,
+            restaurant_name: name
+          })
+        }
         title="Add Review"
       />
       <ReviewList reviews={reviews} />
