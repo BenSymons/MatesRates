@@ -16,6 +16,7 @@ export const RESTAURANTS = gql`
           avatarURL
         }
       }
+      address
       city {
         name
       }

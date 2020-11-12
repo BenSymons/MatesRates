@@ -3,61 +3,73 @@ import { Text, StyleSheet, View } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import { wishlistCount } from '../../utils/utils';
 import { iOSUIKit, iOSColors } from 'react-native-typography';
+import { TouchableOpacity } from 'react-native';
 
 import WishlistButton from './WishlistButton';
 
 export default ({ restaurant, wishlist, navigation }) => {
-  const { name, city, logo, id } = restaurant;
+  const { name, city, logo, id, address } = restaurant;
 
   // const count = wishlistCount(wishlist, id);
 
   return (
     <Card
-    // containerStyle={{ backgroundColor: '#FAA275' }}
-    // wrapperStyle={{ backgroundColor: '#5C374C' }}
+      containerStyle={{
+        borderRadius: 12,
+        borderColor: 'none'
+      }}
+      // containerStyle={{
+      //   // borderRadius: 12,
+      //   width: '100%',
+      //   marginLeft: 0,
+      //   marginRight: 0
+      // }}
     >
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}
-      >
-        <Text style={[iOSUIKit.title3Emphasized, { color: iOSColors.black }]}>
-          {name}
-        </Text>
-
-        <WishlistButton restaurant_id={id} />
-      </View>
-      <Card.Divider />
-      <Card.Image
-        source={{
-          uri: logo
-        }}
-      />
-      <Card.Divider />
-      <Text style={{ marginBottom: 10, textAlign: 'center' }}>{city.name}</Text>
-
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}
-      >
-        {wishlist ? (
-          <Text>Wished by: {wishlistCount(wishlist, id)}</Text>
-        ) : (
-          <Text></Text>
-        )}
-        {/* <WishlistButton restaurant_id={id} /> */}
-      </View>
-      <Button
-        onPress={() => {
+      <TouchableOpacity
+        key={id}
+        onPress={() =>
           navigation.navigate('Restaurant', {
             restaurant
-          });
-        }}
+          })
+        }
+      >
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}
+        >
+          <Text style={[iOSUIKit.title3Emphasized, { color: iOSColors.black }]}>
+            {name}
+          </Text>
+
+          <WishlistButton restaurant_id={id} />
+        </View>
+        <Card.Divider />
+        <Card.Image
+          source={{
+            uri: logo
+          }}
+        />
+        <Card.Divider />
+        <Text
+          style={[
+            iOSUIKit.subhead,
+            { color: iOSColors.grey, textAlign: 'center', marginBottom: 10 }
+          ]}
+        >
+          {address}
+        </Text>
+      </TouchableOpacity>
+
+      <Button
+        onPress={() => navigation.navigate('ReviewForm', { restaurant_id: id })}
+        // onPress={() => {
+        //   navigation.navigate('Restaurant', {
+        //     restaurant
+        //   });
+        // }}
         // icon={<Icon name="code" color="#ffffff" />}
         buttonStyle={{
           borderRadius: 20,
@@ -66,8 +78,24 @@ export default ({ restaurant, wishlist, navigation }) => {
           marginBottom: 0,
           backgroundColor: '#FF8C61'
         }}
-        title="VIEW NOW"
+        title="RECOMMEND"
       />
+
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          marginBottom: 2
+        }}
+      >
+        {wishlist ? (
+          <Text>WISHED BY: {wishlistCount(wishlist, id)} FRIENDS</Text>
+        ) : (
+          <Text></Text>
+        )}
+        {/* <WishlistButton restaurant_id={id} /> */}
+      </View>
     </Card>
   );
 };
@@ -91,3 +119,7 @@ const styles = StyleSheet.create({
   image: {},
   users: {}
 });
+
+// orange #FF8C61
+
+//
