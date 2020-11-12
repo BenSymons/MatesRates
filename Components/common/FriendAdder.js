@@ -33,7 +33,7 @@ const FriendForm = () => {
           const friend = idLookup(username, data.users);
           addFriend({
             variables: {
-              user_id: '5fa91e3486083c1f16e6ffa4',
+              user_id: '5fad52e16b765b6024a6da5d',
               friend_id: friend
             }
           })

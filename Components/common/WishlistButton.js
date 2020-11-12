@@ -17,7 +17,7 @@ export default ({ restaurant_id }) => {
       checked={true}
       onPress={() =>
         addWishlist({
-          variables: { restaurant_id, user_id: '5fa91e3486083c1f16e6ffa4' }
+          variables: { restaurant_id, user_id: '5fad52e16b765b6024a6da5d' }
         })
       }
     />
