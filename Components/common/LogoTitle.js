@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from 'react-native';
+import pizza from '../../assets/pizza.png';
 
 export default function LogoTitle() {
   return (
@@ -10,7 +11,7 @@ export default function LogoTitle() {
         marginRight: 25,
         marginLeft: 15
       }}
-      source={require('../../Styling/pizza.svg')}
+      source={pizza}
     />
   );
 }
