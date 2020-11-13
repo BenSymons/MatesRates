@@ -15,14 +15,14 @@ export default ({ restaurant, wishlist, navigation }) => {
     <Card
       containerStyle={{
         borderRadius: 12,
-        borderColor: 'none'
+        borderColor: 'none',
       }}
     >
       <TouchableOpacity
         key={id}
         onPress={() =>
           navigation.navigate('Restaurant', {
-            restaurant
+            restaurant,
           })
         }
       >
@@ -30,7 +30,7 @@ export default ({ restaurant, wishlist, navigation }) => {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
           }}
         >
           <Text style={[iOSUIKit.title3Emphasized, { color: iOSColors.black }]}>
@@ -45,14 +45,14 @@ export default ({ restaurant, wishlist, navigation }) => {
         <Card.Divider />
         <Card.Image
           source={{
-            uri: logo
+            uri: logo,
           }}
         />
         <Card.Divider />
         <Text
           style={[
             iOSUIKit.subhead,
-            { color: iOSColors.grey, textAlign: 'center', marginBottom: 10 }
+            { color: iOSColors.grey, textAlign: 'center', marginBottom: 10 },
           ]}
         >
           {address}
@@ -63,7 +63,7 @@ export default ({ restaurant, wishlist, navigation }) => {
         onPress={() =>
           navigation.navigate('ReviewForm', {
             restaurant_id: id,
-            restaurant_name: name
+            restaurant_name: name,
           })
         }
         // onPress={() => {
@@ -77,7 +77,7 @@ export default ({ restaurant, wishlist, navigation }) => {
           marginLeft: 0,
           marginRight: 0,
           marginBottom: 0,
-          backgroundColor: '#FF8C61'
+          backgroundColor: '#FF8C61',
         }}
         title="RECOMMEND"
       />
@@ -87,7 +87,7 @@ export default ({ restaurant, wishlist, navigation }) => {
           flexDirection: 'row',
           justifyContent: 'flex-end',
           alignItems: 'center',
-          marginBottom: 2
+          marginBottom: 2,
         }}
       >
         {wishlist ? (
@@ -100,26 +100,10 @@ export default ({ restaurant, wishlist, navigation }) => {
   );
 };
 
-
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#5C374C'
-    // fontSize: 20,
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // border: '1px solid darkblue',
-    // marginTop: 15,
-    // borderLeft: '0.25',
-    // borderRight: '0.25',
-    // width: '100'
+    backgroundColor: '#5C374C',
   },
-  name: {
-    // fontSize: 30
-  },
-  image: {}
+  name: {},
+  image: {},
 });
-
-// orange #FF8C61
-
-//

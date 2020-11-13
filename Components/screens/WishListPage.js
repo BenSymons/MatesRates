@@ -7,7 +7,7 @@ import {
   SafeAreaView,
   FlatList,
   Image,
-  Button
+  Button,
 } from 'react-native';
 import { useQuery, gql } from '@apollo/client';
 import RestaurantList from '../common/RestaurantList';
@@ -42,17 +42,6 @@ export default function WishList(props) {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    // fontSize: 20,
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // border: '1px solid darkblue',
-    // marginTop: '15px',
-    // borderLeft: '0.25',
-    // borderRight: '0.25'
-  },
-  name: {
-    // fontSize: '30px'
-  }
+  card: {},
+  name: {},
 });

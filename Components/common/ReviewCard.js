@@ -29,7 +29,7 @@ export default ({ review, navigation }) => {
       <Button
         onPress={() => {
           navigation.navigate('Restaurant', {
-            restaurant
+            restaurant,
           });
         }}
         icon={<Icon name="code" color="#ffffff" />}
@@ -37,7 +37,7 @@ export default ({ review, navigation }) => {
           borderRadius: 0,
           marginLeft: 0,
           marginRight: 0,
-          marginBottom: 0
+          marginBottom: 0,
         }}
         title="LIKE REVIEW"
       />
@@ -46,20 +46,8 @@ export default ({ review, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  card: {
-    // fontSize: 20,
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // border: '1px solid darkblue',
-    // marginTop: '15px',
-    // borderLeft: '0.25',
-    // borderRight: '0.25',
-    // width: '100'
-  },
-  name: {
-    // fontSize: '30px'
-  },
+  card: {},
+  name: {},
   image: {},
-  users: {}
+  users: {},
 });

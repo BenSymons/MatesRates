@@ -20,6 +20,7 @@ const ProfileNavigator = () => {
         name="Profile"
         component={Profile}
         options={{
+          cardStyle: { backgroundColor: '#5C374C' },
           headerLayoutPreset: 'center',
           headerStyle: {
             backgroundColor: '#944D6F',

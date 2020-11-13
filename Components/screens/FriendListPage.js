@@ -7,7 +7,7 @@ import {
   SafeAreaView,
   FlatList,
   Image,
-  Button
+  Button,
 } from 'react-native';
 
 import { GET_USER } from '../../utils/queries';
@@ -45,7 +45,7 @@ export default function FriendList(props) {
               title={item.name}
               onPress={() => {
                 props.navigation.navigate('User', {
-                  ...item
+                  ...item,
                 });
               }}
             />
@@ -60,17 +60,6 @@ export default function FriendList(props) {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    // fontSize: '20px',
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // border: '1px solid darkblue',
-    // marginTop: '15px',
-    // borderLeft: '0.25',
-    // borderRight: '0.25'
-  },
-  name: {
-    // fontSize: '30px'
-  }
+  card: {},
+  name: {},
 });

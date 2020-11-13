@@ -19,7 +19,7 @@ const ReviewForm = ({ navigation, route }) => {
             iOSUIKit.largeTitleEmphasized,
             {
               textAlign: 'center',
-              fontSize: '30px',
+              fontSize: 30,
               color: '#FF8C61',
               paddingBottom: 50,
               paddingTop: 20,
@@ -39,7 +39,6 @@ const ReviewForm = ({ navigation, route }) => {
             setRating(rating);
           }}
         />
-
 
         <Input
           containerStyle={{ width: '80%', marginTop: 20 }}
