@@ -1,16 +1,28 @@
-import 'react-native-gesture-handler';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { GET_USER } from '../../utils/queries';
-import { useQuery } from '@apollo/client';
-import { Avatar, Card, Button } from 'react-native-elements';
-import styles from '../../Styling/global-style';
-import { iOSUIKit, iOSColors } from 'react-native-typography';
 import Loader from '../common/Loader';
+import "react-native-gesture-handler";
+// import * as React from 'react';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Modal,
+} from "react-native";
+import FriendForm from "../common/FriendAdder";
+import { GET_USER } from "../../utils/queries";
+import { useQuery } from "@apollo/client";
+import { Avatar, Card, Button } from "react-native-elements";
+import styles from "../../Styling/global-style";
+import SearchFriendList from "../common/SearchFriendList";
+import WishList from "../screens/WishListPage";
+import {iOSUIKit, iOSColors} from 'react-native-typography'
 
-const Separator = () => <View style={styles.separator} />;
 
 const ProfileScreen = ({ navigation, route }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [secondModalOpen, setSecondModalOpen] = useState(false);
   const { data, loading, error } = useQuery(GET_USER);
   console.log(data);
   if (loading) {
@@ -56,68 +68,74 @@ const ProfileScreen = ({ navigation, route }) => {
             uri: data.user.avatarURL,
           }}
         />
-        <View
-          style={{
-            alignItems: 'center',
-          }}
-        >
-          <Text
-            style={[iOSUIKit.largeTitleEmphasized, { color: iOSColors.black }]}
-          >
-            {data.user.username}
-          </Text>
 
-          <Text
-            style={[iOSUIKit.largeTitleEmphasized, { color: iOSColors.black }]}
-          >
-            Friends({data.user.friends.length})
-          </Text>
-        </View>
-        <View
-          style={{
-            marginTop: 20,
-            width: '90%',
-            margin: 'auto',
-          }}
-        >
-          <Button
-            color="#F8A677"
-            title="FriendList"
-            onPress={() => {
-              navigation.navigate('FriendList');
-            }}
-            buttonStyle={{
-              flex: 0.5,
-              justifyContent: 'space-evenly',
-              width: '95%',
-              padding: 10,
-              borderRadius: 20,
-              marginTop: 10,
-              backgroundColor: '#FF8C61',
-            }}
-          >
-            FriendList with preview BUTTON
-          </Button>
-          <Button
-            color="#F8A677"
-            title="Wishlist"
-            onPress={() => {
-              navigation.navigate('WishList');
-            }}
-            buttonStyle={{
-              flex: 0.5,
-              justifyContent: 'space-evenly',
-              width: '95%',
-              padding: 10,
-              borderRadius: 20,
-              marginTop: 5,
-              backgroundColor: '#FF8C61',
-            }}
-          >
-            Wishlist with preview BUTTON
-          </Button>
-        </View>
+        <View style={{
+          alignItems: "center"
+        }}>
+        <Text style={[
+                  iOSUIKit.largeTitleEmphasized,
+                  { color: iOSColors.black }
+                ]}>{data.user.username}</Text>
+
+        <Text style={[
+                  iOSUIKit.largeTitleEmphasized,
+                  { color: iOSColors.black },
+                ]}>
+          Friends({data.user.friends.length})
+        </Text>
       </Card>
+
+      <Modal visible={modalOpen} animationType="slide">
+        <View>
+          <TouchableOpacity
+            title="Hide Friends"
+            color="#F8A677"
+            style={avatar.modalToggle}
+            onPress={() => setModalOpen(false)}
+          >
+            <Text style={{ color: "white" }}>Hide Friends</Text>
+          </TouchableOpacity>
+          <SearchFriendList
+            users={data.user.friends}
+            friends={data.user.friends}
+          ></SearchFriendList>
+        </View>
+      </Modal>
+
+      <TouchableOpacity
+        backgroundColor="#F8A677"
+        title="FriendList"
+        color="#F8A677"
+        style={avatar.modalToggle}
+        onPress={() => setModalOpen(true)}
+      >
+        <Text style={{ color: "white" }}>Friends List</Text>
+      </TouchableOpacity>
+
+      <Modal visible={secondModalOpen} animationType="slide">
+        <View>
+          <TouchableOpacity
+            title="Hide Wishlist"
+            color="#F8A677"
+            style={avatar.modalToggle}
+            onPress={() => setSecondModalOpen(false)}
+          >
+            <Text style={{ color: "white" }}>Hide Wishlist</Text>
+          </TouchableOpacity>
+          <WishList></WishList>
+
+        </View>
+      </Modal>
+
+      <TouchableOpacity
+        backgroundColor="#F8A677"
+        title="Wishlist"
+        color="#F8A677"
+        style={avatar.modalToggle}
+        onPress={() => setSecondModalOpen(true)}
+      >
+        <Text style={{ color: "white" }}>Wishlist</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -135,6 +153,14 @@ const avatar = StyleSheet.create({
   // },
   card: {
     backgroundColor: '#4E2D3E',
+  },
+  modalToggle: {
+    backgroundColor: "#F8A677",
+    marginTop: 30,
+    marginBottom: 10,
+    padding: 10,
+    borderRadius: 40,
+    alignSelf: "center",
   },
 });
 

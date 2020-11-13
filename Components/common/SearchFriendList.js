@@ -1,29 +1,29 @@
-import { useMutation } from '@apollo/client';
-import React, { useState, useEffect } from 'react';
-import { View, ScrollView } from 'react-native';
+
+import { useMutation } from "@apollo/client";
+import React, { useState, useEffect } from "react";
+import { View, ScrollView } from "react-native";
 import {
   ListItem,
   Avatar,
   Button,
   CheckBox,
-  Card
-} from 'react-native-elements';
-import { ADD_FRIEND } from '../../utils/queries';
-
+  Card,
+} from "react-native-elements";
+import { ADD_FRIEND } from "../../utils/queries";
 export default ({ users, friends, navigation }) => {
   const [addFriend] = useMutation(ADD_FRIEND);
   const [friendList, setFriends] = useState([]);
-
   useEffect(() => {
     setFriends(friends);
   }, []);
 
   return (
-    <ScrollView style={{ backgroundColor: '#4E2D3E', height: '100%' }}>
+    <ScrollView style={{ backgroundColor: "#4E2D3E", height: "100%" }}>
       <Card
         containerStyle={{
           borderRadius: 12,
-          borderColor: 'none'
+          borderColor: "none",
+
         }}
       >
         {users.map((user) => (
@@ -42,9 +42,10 @@ export default ({ users, friends, navigation }) => {
               onPress={() => {
                 addFriend({
                   variables: {
-                    user_id: '5fad52e16b765b6024a6da5d',
-                    friend_id: user.id
-                  }
+                    user_id: "5fad52e16b765b6024a6da5d",
+                    friend_id: user.id,
+                  },
+
                 });
                 setFriends([...friendList, user]);
               }}
